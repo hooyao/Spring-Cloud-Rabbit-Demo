@@ -1,0 +1,214 @@
+{
+  "rabbit_version": "3.6.15",
+  "users": [
+    {
+      "name": "guest",
+      "password_hash": "8qubKrSKSQk8il1DZg3K3zj7iyNBfY0oJ45FMIxVc6CJcc+E",
+      "hashing_algorithm": "rabbit_password_hashing_sha256",
+      "tags": "administrator"
+    }
+  ],
+  "vhosts": [
+    {
+      "name": "/"
+    },
+    {
+      "name": "tradeshift"
+    }
+  ],
+  "permissions": [
+    {
+      "user": "guest",
+      "vhost": "/",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    },
+    {
+      "user": "guest",
+      "vhost": "tradeshift",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    }
+  ],
+  "parameters": [],
+  "global_parameters": [
+    {
+      "name": "cluster_name",
+      "value": "test"
+    }
+  ],
+  "policies": [],
+  "exchanges": [
+    {
+      "name": "auditlog",
+      "vhost": "tradeshift",
+      "type": "topic",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    },
+    {
+      "name": "company.profile",
+      "vhost": "tradeshift",
+      "type": "fanout",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    },
+    {
+      "name": "discovery.offers",
+      "vhost": "tradeshift",
+      "type": "fanout",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    },
+    {
+      "name": "buyersourceddocuments",
+      "vhost": "tradeshift",
+      "type": "direct",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    },
+    {
+      "name": "eventbus",
+      "vhost": "tradeshift",
+      "type": "topic",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    }
+  ],
+  "queues": [
+    {
+      "name": "auditlog.indexing",
+      "vhost": "tradeshift",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "auditlog.storage",
+      "vhost": "tradeshift",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "company.profile",
+      "vhost": "tradeshift",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "discovery.offers",
+      "vhost": "tradeshift",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "discovery.companyprofile",
+      "vhost": "tradeshift",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "bsd.documents",
+      "vhost": "tradeshift",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "bsd.applicationresponses",
+      "vhost": "tradeshift",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "eventbus.companyprofile",
+      "vhost": "tradeshift",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    }
+  ],
+  "bindings": [
+    {
+      "source": "auditlog",
+      "vhost": "tradeshift",
+      "destination": "auditlog.indexing",
+      "destination_type": "queue",
+      "routing_key": "",
+      "arguments": {}
+    },
+    {
+      "source": "auditlog",
+      "vhost": "tradeshift",
+      "destination": "auditlog.storage",
+      "destination_type": "queue",
+      "routing_key": "",
+      "arguments": {}
+    },
+    {
+      "source": "company.profile",
+      "vhost": "tradeshift",
+      "destination": "company.profile",
+      "destination_type": "queue",
+      "routing_key": "",
+      "arguments": {}
+    },
+    {
+      "source": "discovery.offers",
+      "vhost": "tradeshift",
+      "destination": "discovery.offers",
+      "destination_type": "queue",
+      "routing_key": "",
+      "arguments": {}
+    },
+    {
+      "source": "discovery.offers",
+      "vhost": "tradeshift",
+      "destination": "discovery.companyprofile",
+      "destination_type": "queue",
+      "routing_key": "",
+      "arguments": {}
+    },
+    {
+      "source": "buyersourceddocuments",
+      "vhost": "tradeshift",
+      "destination": "bsd.applicationresponses",
+      "destination_type": "queue",
+      "routing_key": "applicationresponses",
+      "arguments": {}
+    },
+    {
+      "source": "buyersourceddocuments",
+      "vhost": "tradeshift",
+      "destination": "bsd.documents",
+      "destination_type": "queue",
+      "routing_key": "documents",
+      "arguments": {}
+    },
+    {
+      "source": "eventbus",
+      "vhost": "tradeshift",
+      "destination": "eventbus.companyprofile",
+      "destination_type": "queue",
+      "routing_key": "network.#",
+      "arguments": {}
+    }
+  ]
+}

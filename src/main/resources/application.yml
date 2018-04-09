@@ -1,0 +1,30 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /demo
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5671
+    ssl:
+      enabled: true
+      key-store: client_certs/keycert.p12
+      key-store-type: PKCS12
+      key-store-password: 123456
+      trust-store: client_certs/truststore.jks
+      trust-store-password: 123456
+      trust-store-type: JKS
+      algorithm: TLSv1.2
+  cloud:
+    stream:
+      bindings:
+        outputChannel1:
+          destination: stream-demo-exchange
+
+
+
+
+
+
+
+

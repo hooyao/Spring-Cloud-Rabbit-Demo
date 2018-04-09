@@ -1,0 +1,10 @@
+FROM rabbitmq:3.6.15-management
+
+MAINTAINER huy@tradeshift.com
+
+ADD config /etc/rabbitmq/
+ADD server_certs /etc/rabbitmq/certs
+
+
+
+

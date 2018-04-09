@@ -1,0 +1,15 @@
+version: '3'
+services:
+  cnpay-rabbit:
+    container_name: cnpay-rabbit
+    build:
+      context: ./rabbit
+      dockerfile: rabbitDockerFile
+    image: cnpay-rabbit-image:0.1
+    ports:
+      - "4369:4369/tcp"
+      - "5671:5671/tcp"
+      - "5672:5672/tcp"
+      - "15671:15671/tcp"
+      - "15672:15672/tcp"
+      - "25672:25672/tcp"
