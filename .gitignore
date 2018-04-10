@@ -28,5 +28,7 @@ gen_cert/client
 gen_cert/server
 gen_cert/cnpay-dev-ca
 
+
+**/*.pem
 **/*.p12
 **/*.jks
